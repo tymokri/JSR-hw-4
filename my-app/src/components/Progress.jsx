@@ -1,5 +1,6 @@
 import React from "react";
 import cn from 'classnames';
+import PropTypes from 'prop-types';
 
 class Progress extends React.Component {
     render() {
@@ -17,22 +18,20 @@ class Progress extends React.Component {
             }
         };
 
-        const progressClass = cn(
-            {
-                'progress': true,
-            }
-        );
+        const progressClass = cn('progress');
 
         return (
             <div className={cn(progressClass)}>
-                <div className={divAttrs.className} role={divAttrs.role} aria-valuenow={divAttrs.ariaValueNow}
-                     aria-valuemin={divAttrs.ariaValueMin} aria-valuemax={divAttrs.ariaValueMax}
-                     aria-label={divAttrs.ariaLabel} style={divAttrs.style}>
+                <div {...divAttrs}>
                     {percentage +"%"}
                 </div>
             </div>
-        )
+        );
     }
+}
+
+Progress.propTypes = {
+    percentage: PropTypes.number.isRequired
 }
 
 export default Progress;
